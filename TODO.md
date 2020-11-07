@@ -13,12 +13,12 @@ As one of your last projects, it's possible you will be sharing this with employ
 ## Home Page:
 This should display all of the movies in the movie database. When a movie poster is clicked, a user should be brought to the /details view.
 
-- [ ] Display all movies in grid
-    - [ ] Poster display
-    - [ ] Title display above poster
-    - [ ] Description display underneath poster
+- [X] Display all movies in grid
+    - [X] Poster display
+    - [X] Title display to right poster
+    - [X] Description display underneath title
     - [ ] Format as card
-- [ ] Make poster clickable
+- [x] Make poster clickable
     - [ ] Moves user to the /details page
 
 
