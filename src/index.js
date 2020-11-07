@@ -4,11 +4,14 @@ import './index.css';
 import App from './components/App/App.js';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import axios from 'axios';
 // Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
-import {createSagaMiddleware, takeEvery, put} from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
+import {put, takeEvery} from 'redux-saga/effects';
+
 
 // Create the rootSaga generator function
 function* rootSaga() {
@@ -18,14 +21,22 @@ function* rootSaga() {
 
 // Create the saga to handle async retrieval movies from server
 function* fetchMovies() {
-    const moviesArray = yield axios.get('/api/movie');
+    try {
+        const moviesArray = yield axios.get('/api/movie');
     yield put({type: 'SET_MOVIES', payload: moviesArray});
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // Create the saga to handle async retrieval of genres from server
 function* fetchGenres() {
-    const genresArray = yield axios.get('/api/genre');
-    yield put({type: 'SET_GENRES', payload: genresArray});
+    try {
+        const genresArray = yield axios.get('/api/genre');
+        yield put({type: 'SET_GENRES', payload: genresArray});
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // Create sagaMiddleware

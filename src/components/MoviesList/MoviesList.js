@@ -4,9 +4,19 @@ import {withRouter} from 'react-router-dom';
 
 class MoviesList extends Component {
 
-    render () {
+    componentDidMount() {
+        this.getMovies();
+    }
+
+    // This function handles populating the redux store with the movies in the DB
+    getMovies = () => {
+        this.props.dispatch({type: 'FETCH_MOVIES'});
+    }
+
+    render() {
         return (
             <>
+                {JSON.stringify(this.props.reduxState.movies)};
             </>
         );
     }
