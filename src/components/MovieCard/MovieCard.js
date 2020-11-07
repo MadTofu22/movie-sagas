@@ -20,7 +20,7 @@ class MovieCard extends Component {
             <>
             {/* {JSON.stringify(movie)} */}
             <div className='movieContainer'>
-                <img src={movie.poster} alt={this.createAltText(movie.title)} onClick={()=>this.handlePosterClick(movie.id)} />
+                <img className='cardPoster' src={movie.poster} alt={this.createAltText(movie.title)} onClick={()=>this.handlePosterClick(movie.id)} />
                 <div className='movieTextBlock'>
                     <h2>{movie.title}</h2>
                     <p>{movie.description}</p>

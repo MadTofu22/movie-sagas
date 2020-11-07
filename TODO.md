@@ -17,7 +17,7 @@ This should display all of the movies in the movie database. When a movie poster
     - [X] Poster display
     - [X] Title display to right poster
     - [X] Description display underneath title
-    - [ ] Format as card
+    - [X] Format as card
 - [x] Make poster clickable
     - [ ] Moves user to the /details page
 
