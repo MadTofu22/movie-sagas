@@ -8,11 +8,24 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
-import createSagaMiddleware from 'redux-saga';
+import {createSagaMiddleware, takeEvery, put} from 'redux-saga';
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    yield takeEvery('FETCH_MOVIES', fetchMovies);
+    yield takeEvery('FETCH_GENRES', fetchGenres);
+}
 
+// Create the saga to handle async retrieval movies from server
+function* fetchMovies() {
+    const moviesArray = yield axios.get('/api/movie');
+    yield put({type: 'SET_MOVIES', payload: moviesArray});
+}
+
+// Create the saga to handle async retrieval of genres from server
+function* fetchGenres() {
+    const genresArray = yield axios.get('/api/genre');
+    yield put({type: 'SET_GENRES', payload: genresArray});
 }
 
 // Create sagaMiddleware
