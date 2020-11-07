@@ -23,7 +23,7 @@ function* rootSaga() {
 function* fetchMovies() {
     try {
         const moviesArray = yield axios.get('/api/movie');
-    yield put({type: 'SET_MOVIES', payload: moviesArray});
+        yield put({type: 'SET_MOVIES', payload: moviesArray.data});
     } catch (error) {
         console.log(error);
     }
@@ -33,7 +33,7 @@ function* fetchMovies() {
 function* fetchGenres() {
     try {
         const genresArray = yield axios.get('/api/genre');
-        yield put({type: 'SET_GENRES', payload: genresArray});
+        yield put({type: 'SET_GENRES', payload: genresArray.data});
     } catch (error) {
         console.log(error);
     }
@@ -56,7 +56,7 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
-            return action.payload;
+            return action.payload.data;
         default:
             return state;
     }
