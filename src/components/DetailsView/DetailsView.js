@@ -7,6 +7,8 @@ class DetailsView extends Component {
     render () {
         return (
             <>
+            {console.log(this.props)}
+            <h1>Movie Title</h1>
             </>
         );
     }

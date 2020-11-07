@@ -10,8 +10,10 @@ class MovieCard extends Component {
     }
 
     // This function handles the click event for the poster image
-    handlePosterClick = (id) => {
-        console.log('poster clicked, id:', id);
+    handlePosterClick = (movie) => {
+        console.log('poster clicked, id:', movie.id);
+        const path = `/details/${movie.id}`;
+        this.props.history.push(path);
     }
 
     render () {
@@ -20,7 +22,7 @@ class MovieCard extends Component {
             <>
             {/* {JSON.stringify(movie)} */}
             <div className='movieContainer'>
-                <img className='cardPoster' src={movie.poster} alt={this.createAltText(movie.title)} onClick={()=>this.handlePosterClick(movie.id)} />
+                <img className='cardPoster' src={movie.poster} alt={this.createAltText(movie.title)} onClick={()=>this.handlePosterClick(movie)} />
                 <div className='movieTextBlock'>
                     <h2>{movie.title}</h2>
                     <p>{movie.description}</p>
