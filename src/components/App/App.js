@@ -25,7 +25,7 @@ getMovies = () => {
         <Router>
           {/* ADD PAGES! */}
           <Route exact path='/' component={MoviesList} />
-          <Route path='/details/:id' component={(props)=>{return <DetailsView id={props.match.id}/>}} />
+          <Route path='/details/:id' component={DetailsView} />
         </Router>
       </div>
     );
