@@ -25,7 +25,9 @@ class MovieCard extends Component {
                 <img className='cardPoster' src={movie.poster} alt={this.createAltText(movie.title)} onClick={()=>this.handlePosterClick(movie)} />
                 <div className='movieTextBlock'>
                     <h2>{movie.title}</h2>
-                    <p>{movie.description}</p>
+                    <div className='movieDescription'>
+                        <p>{movie.description}</p>
+                    </div>
                 </div>
             </div>
             </>
