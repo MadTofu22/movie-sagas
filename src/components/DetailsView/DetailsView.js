@@ -42,7 +42,7 @@ class DetailsView extends Component {
         return (
             <>
             <h1>{movie.title}</h1>
-            <button className='detailsReturnButton' onClick={this.handleClick}>Return to Movies</button>
+            <button className='moviesButton' onClick={this.handleClick}>Return to Movies</button>
             <div className='detailsContainer'>
                 <img className='detailsPoster' src={movie.poster} alt={this.createAltText(movie.title)} />
                 <div className='detailsTextBlock'>

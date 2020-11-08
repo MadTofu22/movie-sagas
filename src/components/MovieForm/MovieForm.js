@@ -4,6 +4,13 @@ import {withRouter} from 'react-router-dom';
 
 class MovieForm extends Component {
 
+    state = {
+        title: '',
+        poster: '',
+        description: '',
+        genre: null
+    }
+
     componentDidMount () {
         this.getGenres();
     }
@@ -13,30 +20,64 @@ class MovieForm extends Component {
         this.props.dispatch({type: 'FETCH_GENRES'});
     }
 
+    // This function handles updating the local state when inputs are being filled in
+    handleChange = (event, input) => {
+        this.setState({
+            ...this.state,
+            [input]: event.target.value
+        });
+        console.log('state:', this.state)
+    }
+
+    // This function handles submiting the form and adding the new movie to the DB
+    handleSubmit = () => {
+
+    }
+
+    // This function handles cancelling the input and returning the user to the home page
+    handleCancel = () => {
+        this.props.history.push('/');
+    }
+
     render () {
         return (
             <>
             <h1>Add a New Movie!</h1>
             <div className='movieForm'>
                 <form onSubmit={event => this.handleSubmit}>
-                    <table>
+                    <table className='inputTable'>
                         <thead>
                             <th><label htmlFor='titleInput'>Movie Title</label></th>
                             <th><label htmlFor='posterInput'>Poster URL</label></th>
-                            <th><label htmlFor='descriptionInput'>Description</label></th>
                             <th><label htmlFor='genreInput'>Genre</label></th>
                         </thead>
                         <tbody>
-                            <td><input required type='text' name='titleInput' placeholder='Movie Title' onChange={event => this.handleChange(event, 'title')}/></td>
-                            <td><input type='text' name='posterInput' placeholder='Poster URL' onChange={event => this.handleChange(event, 'poster')}/></td>
-                            <td><input type='text' name='descriptionInput' placeholder='Movie Description' onChange={event => this.handleChange(event, 'description')}/></td>
-                            <td><select name='genreInput' placeholder='Genre'>
-                                {this.props.reduxState.genres.map(genre => {
-                                    return <option value={genre.id}>{genre.name}</option>;
-                                })}
-                            </select></td>
+                            <tr>
+                                <td><input required type='text' name='titleInput' placeholder='Movie Title' onChange={event => this.handleChange(event, 'title')}/></td>
+                                <td><input type='text' name='posterInput' placeholder='Poster URL' onChange={event => this.handleChange(event, 'poster')}/></td>
+                                <td><select name='genreInput' placeholder='Genre' onChange={event => this.handleChange(event, 'genre')}>
+                                    <option></option>
+                                    {this.props.reduxState.genres.map(genre => {
+                                        return <option key={genre.id} value={genre.id}>{genre.name}</option>;
+                                    })}
+                                </select></td>
+                            </tr>
                         </tbody>
                     </table>
+                    <table className='inputTable'>
+                            <thead>
+                                <th><label htmlFor='descriptionInput'>Description</label></th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td><textarea cols='51' rows='10' name='descriptionInput' placeholder='Movie Description' onChange={event => this.handleChange(event, 'description')}/></td>
+                                </tr>
+                            </tbody>
+                    </table>
+                    <div className='formButtons'>
+                        <button className='moviesButton' onClick={this.handleCancel}>Cancel</button>
+                        <button className='moviesButton' onClick={this.submit}>Add Movie</button>
+                    </div>
                 </form>
             </div>
             </>
@@ -45,5 +86,5 @@ class MovieForm extends Component {
 }
 
 const reduxProps = (reduxState) => ({reduxState});
-const MoviesFormWithRouter = withRouter(MoviesForm);
-export default connect(reduxProps)(MoviesFormWithRouter)
+const MovieFormWithRouter = withRouter(MovieForm);
+export default connect(reduxProps)(MovieFormWithRouter)

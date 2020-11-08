@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 // Import components
 import MoviesList from '../MoviesList/MoviesList';
 import DetailsView from '../DetailsView/DetailsView';
+import MovieForm from '../MovieForm/MovieForm';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
           {/* ADD PAGES! */}
           <Route exact path='/' component={MoviesList} />
           <Route path='/details/:id' component={DetailsView} />
+          <Route path='/add-movie' component={MovieForm} />
         </Router>
       </div>
     );
