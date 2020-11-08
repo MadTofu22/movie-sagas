@@ -19,6 +19,11 @@ class DetailsView extends Component {
         return `Poster image for the movie ${title}`;
     }
 
+    // This function handles the click event for the return to movies button
+    handleClick = () => {
+        this.props.history.push('/');
+    }
+
     render () {
         const movieId = this.props.match.params.id ? this.props.match.params.id : 0;
         const movie = this.props.reduxState.movies[movieId-1] ? this.props.reduxState.movies[movieId-1] : {};
@@ -37,6 +42,7 @@ class DetailsView extends Component {
                             return <GenreTag key={tag.genres_id} tag={tag} />;
                         })}
                     </section>
+                    <button className='returnButton' onClick={this.handleClick}>Return to Movies</button>
                 </div>
             </div>
             </>
