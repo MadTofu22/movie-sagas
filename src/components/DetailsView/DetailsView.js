@@ -14,9 +14,16 @@ class DetailsView extends Component {
         return (
             <>
             {/* {JSON.stringify(this.props.movie)} */}
-            <h2>{movie.title}</h2>
+            <h1>{movie.title}</h1>
             <div className='detailsContainer'>
                 <img className='detailsPoster' src={movie.poster} alt={this.createAltText(movie.title)} />
+                
+                <div className='detailsTextBlock'>
+                    <h2 className='detailsHeader'>Description:</h2>
+                    <p className='detailsDescription'>{movie.description}</p>
+                    <h2 className='detailsHeader'>Genres:</h2>
+                    
+                </div>
             </div>
             </>
         );

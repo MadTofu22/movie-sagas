@@ -26,9 +26,9 @@ This should display all of the movies in the movie database. When a movie poster
 This should show all details including genres, for the selected movie.
 
 - [ ] Display all movie details
-    - [ ] Display larger poster
-    - [ ] Display title to right of poster
-    - [ ] Display description under title
+    - [X] Display larger poster
+    - [X] Display title to right/above of poster
+    - [X] Display description under title
     - [ ] Display list of genres under description
     - [ ] Back to List button to return to home page
 - [ ] STRETCH: Edit Page button

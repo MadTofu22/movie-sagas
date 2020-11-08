@@ -15,7 +15,7 @@ body {
   background-color: rgba(104, 203, 228, 0.6);
   display: inline-flex;
   border: 5px solid black;
-  border-radius: 25px;
+  border-radius: 10px;
   margin: 1%;
   max-width: 400px;
   max-height: 320px;
@@ -25,6 +25,7 @@ body {
   margin: 2%;
   width: 200px;
   height: 300px;
+  border: 2px solid black;
 }
 
 .movieTextBlock {
@@ -36,10 +37,13 @@ body {
   overflow: hidden;
 }
 
-h2 {
+.cardHeader {
   border-bottom: 5px dotted black;
-  margin: 0%;
-  padding: 0%;
+  margin-top: 1%;
+  padding-bottom: 1%;
+  text-align: center;
+  /* margin: 0%;
+  padding: 0%; */
 }
 
 .movieDescription, p {
@@ -59,6 +63,21 @@ h2 {
 }
 .detailsPoster {
   margin: 2%;
-  width: 400px;
+  min-width: 400px;
   height: 600px;
+  border: 5px solid black;
+}
+
+.detailsTextBlock {
+  margin: 2%;
+  text-align: left;
+}
+
+.detailsHeader {
+  
+  margin-bottom: 1%;
+}
+
+.detailsDescription {
+  font-size: 20px;
 }
