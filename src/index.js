@@ -41,9 +41,12 @@ function* fetchGenres() {
 }
 
 // Create saga to handle async retrieval of genre tags for a specific movie from the server
-function* fetchTags() {
+function* fetchTags(action) {
     try {
-        const tagsArray = yield axios.get('/api/joins')
+        const tagsArray = yield axios.get(`/api/joins`);
+        yield put({type: 'SET_TAGS', payload: tagsArray.data});
+    } catch (error) {
+        console.log(error);
     }
 }
 
@@ -64,7 +67,17 @@ const movies = (state = [], action) => {
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
-            return action.payload.data;
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
+// Used to store the genre tags
+const tags = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_TAGS':
+            return action.payload;
         default:
             return state;
     }
@@ -75,6 +88,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        tags,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

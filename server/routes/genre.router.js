@@ -4,8 +4,14 @@ const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
   // Add query to get all genres
-  const queryText = ``
-  res.sendStatus(500)
+  const queryText = `SELECT * FROM "genres";`;
+
+  pool.query(queryText).then(result => {
+    console.log(result.rows);
+    res.send(result.rows);
+  }).catch(error => {
+    res.sendStatus(500);
+  });
 });
 
 module.exports = router;

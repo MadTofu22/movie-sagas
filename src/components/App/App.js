@@ -10,12 +10,22 @@ import DetailsView from '../DetailsView/DetailsView';
 class App extends Component {
   componentDidMount() {
     this.getMovies();
-}
+    this.getGenres();
+    this.getTags();
+  }
 
-// This function handles populating the redux store with the movies in the DB
-getMovies = () => {
+  // This function handles populating the redux store with the movies in the DB
+  getMovies = () => {
     this.props.dispatch({type: 'FETCH_MOVIES'});
-}
+  }
+
+  getGenres = () => {
+    this.props.dispatch({type: 'FETCH_GENRES'});
+  }
+
+  getTags = () => {
+    this.props.dispatch({type: 'FETCH_TAGS'});
+  }
 
   // Renders the entire app on the DOM
   render() {
@@ -25,7 +35,7 @@ getMovies = () => {
         <Router>
           {/* ADD PAGES! */}
           <Route exact path='/' component={MoviesList} />
-          <Route path='/details/:id' component={(props)=>{return <DetailsView movie={this.props.reduxState.movies[props.match.params.id-1]}/>}} />
+          <Route path='/details/:id' component={DetailsView} />
         </Router>
       </div>
     );
