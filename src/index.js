@@ -17,6 +17,7 @@ import {put, takeEvery} from 'redux-saga/effects';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
+    yield takeEvery('FETCH_TAGS', fetchTags);
 }
 
 // Create the saga to handle async retrieval movies from server
@@ -36,6 +37,13 @@ function* fetchGenres() {
         yield put({type: 'SET_GENRES', payload: genresArray.data});
     } catch (error) {
         console.log(error);
+    }
+}
+
+// Create saga to handle async retrieval of genre tags for a specific movie from the server
+function* fetchTags() {
+    try {
+        const tagsArray = yield axios.get('/api/joins')
     }
 }
 
