@@ -4,9 +4,21 @@ import {withRouter} from 'react-router-dom';
 import GenreTag from '../GenreTag/GenreTag';
 
 class DetailsView extends Component {
-    
+
     componentDidMount () {
         this.getTags(this.props.match.params.id);
+        this.getMovies();
+        this.getGenres();
+    }
+    
+    // This function handles populating the redux store with the movies in the DB
+    getMovies = () => {
+    this.props.dispatch({type: 'FETCH_MOVIES'});
+    }
+
+    // This function handles populating the redux store with the genres in the DB
+    getGenres = () => {
+    this.props.dispatch({type: 'FETCH_GENRES'});
     }
 
     // This function handles populating the redux store with the genre tags linked to the currently displayed movie
@@ -42,7 +54,7 @@ class DetailsView extends Component {
                             return <GenreTag key={tag.genres_id} tag={tag} />;
                         })}
                     </section>
-                    <button className='returnButton' onClick={this.handleClick}>Return to Movies</button>
+                    <button className='detailsReturnButton' onClick={this.handleClick}>Return to Movies</button>
                 </div>
             </div>
             </>
