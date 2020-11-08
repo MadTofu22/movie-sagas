@@ -33,6 +33,7 @@ class MovieForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.dispatch({type: 'ADD_MOVIE', payload: this.state});
+        event.target.reset();
     }
 
     // This function handles cancelling the input and returning the user to the home page

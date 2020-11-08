@@ -36,19 +36,19 @@ This should show all details including genres, for the selected movie.
 ## Add Movie Page:
 Allow the user to add a new movie including a link to the movie poster image
 
-- [ ] Input form
-    - [ ] Title input (required)
-    - [ ] Poster image link input (optional)
-    - [ ] Text area input for description (optional)
-    - [ ] Genre list drop down (required)
+- [X] Input form
+    - [X] Title input (required)
+    - [X] Poster image link input (optional)
+    - [X] Text area input for description (optional)
+    - [X] Genre list drop down (required)
         - [ ] STRETCH: Select multiple genres
-- [ ] Cancel button
-    - [ ] Clears all inputs
-    - [ ] Returns user to Home Page
-- [ ] Save button
-    - [ ] Adds movie to "movies" table in DB
-    - [ ] Clears all inputs
-    - [ ] Returns user to the Home Page 
+- [X] Cancel button
+    - [X] Clears all inputs
+    - [X] Returns user to Home Page
+- [X] Save button
+    - [X] Adds movie to "movies" table in DB
+    - [X] Clears all inputs
+    - [X] Returns user to the Home Page 
 
 ## STRETCH: Edit Page
 Add to the detail page an edit button that brings the user to the edit page.
@@ -69,7 +69,7 @@ Add to the detail page an edit button that brings the user to the edit page.
 - [ ] Display all genres on movie list page. Research [array_agg](https://stackoverflow.com/questions/43458174/how-to-save-and-return-javascript-object-with-subarray-in-normalized-sql) to make this possible.
 - [ ] Allow the user to select many genres
 - [ ] Move sagas and reducers out of your `index.js` and into separate files (ideally in `src/redux/reducers` and `src/redux/sagas` folders).
-- [ ] Allow the user to refresh the details or edit page. The url for the details page would be something like `/details/1` for movie with id of `1`. Research [react router params](https://reacttraining.com/react-router/web/example/url-params).
+- [X] Allow the user to refresh the details or edit page. The url for the details page would be something like `/details/1` for movie with id of `1`. Research [react router params](https://reacttraining.com/react-router/web/example/url-params).
 - [ ] Allow the user to add a genre to a movie.
 - [ ] Allow the user to remove a genre from a movie.
 - [ ] Only display the top 10 movies, and allow the user to search for movie titles with a search bar on the home page (you can do this on the client side or the server side, server side is a bigger stretch, but good practice).
