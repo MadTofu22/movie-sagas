@@ -43,7 +43,7 @@ function* fetchGenres() {
 // Create saga to handle async retrieval of genre tags for a specific movie from the server
 function* fetchTags(action) {
     try {
-        const tagsArray = yield axios.get(`/api/joins`);
+        const tagsArray = yield axios.get(`/api/joins/${action.payload}`);
         yield put({type: 'SET_TAGS', payload: tagsArray.data});
     } catch (error) {
         console.log(error);

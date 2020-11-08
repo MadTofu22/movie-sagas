@@ -1,30 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom';
+import GenreTag from '../GenreTag/GenreTag';
 
 class DetailsView extends Component {
     
     componentDidMount () {
-        // const movieId = this.props.movie ? this.props.movie.id : null;
-        // this.getTags(this.props.movieId);
-        // this.getGenres();
-        // this.getMovies();
+        this.getTags(this.props.match.params.id);
     }
 
-    // This function handles populating the tagsArray in the redux store with the tags for the currently displayed movie
-    // getTags = (id) => {
-    //     this.props.dispatch({type: `FETCH_TAGS`, payload: id});
-    // }
-
-    // // This function handles populating the genresArray in the redux store
-    // getGenres = () => {
-    //     this.props.dispatch({type: `FETCH_GENRES`});
-    // }
-
-    // // This function handles populating the moviesArray in the redux store
-    // getMovies = () => {
-    //     this.props.dispatch({type: `FETCH_MOVIES`});
-    // }
+    // This function handles populating the redux store with the genre tags linked to the currently displayed movie
+    getTags = (id) => {
+        this.props.dispatch({type: 'FETCH_TAGS', payload: id});
+    }
 
     // This function creates the alternate text for the poster image
     createAltText = (title) => {
@@ -32,14 +20,11 @@ class DetailsView extends Component {
     }
 
     render () {
-        const movies = this.props.reduxState.movies ? this.props.reduxState.movies : [];
-        const movie = movies[this.props.movieId-1];
-        // const genres = this.props.genres ? this.props.genres : {};
-        // const tags = this.props.reduxState.tags ? this.props.tags : {};
+        const movieId = this.props.match.params.id ? this.props.match.params.id : 0;
+        const movie = this.props.reduxState.movies[movieId-1] ? this.props.reduxState.movies[movieId-1] : {};
         return (
             <>
-            {JSON.stringify(movie)}
-            {/* <h1>{movie.title}</h1>
+            <h1>{movie.title}</h1>
             <div className='detailsContainer'>
                 <img className='detailsPoster' src={movie.poster} alt={this.createAltText(movie.title)} />
                 
@@ -47,11 +32,13 @@ class DetailsView extends Component {
                     <h2 className='detailsHeader'>Description:</h2>
                     <p className='detailsDescription'>{movie.description}</p>
                     <h2 className='detailsHeader'>Genres:</h2>
-                    {this.props.reduxState.tags.map(tag => {
-                        return `${this.props.reduxState.genres[tag.genres_id]}, `;
-                    })}
+                    <section className='detailsTags'>
+                        {this.props.reduxState.tags.map(tag => {
+                            return <GenreTag key={tag.genres_id} tag={tag} />;
+                        })}
+                    </section>
                 </div>
-            </div> */}
+            </div>
             </>
         );
     }

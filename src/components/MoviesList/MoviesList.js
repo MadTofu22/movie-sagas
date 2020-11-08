@@ -6,6 +6,21 @@ import MovieCard from '../MovieCard/MovieCard';
 
 class MoviesList extends Component {
 
+    componentDidMount() {
+        this.getMovies();
+        this.getGenres();
+      }
+    
+      // This function handles populating the redux store with the movies in the DB
+      getMovies = () => {
+        this.props.dispatch({type: 'FETCH_MOVIES'});
+      }
+    
+      // This function handles populating the redux store with the genres in the DB
+      getGenres = () => {
+        this.props.dispatch({type: 'FETCH_GENRES'});
+      }
+      
     render() {
         return (
             <div className='moviesGrid'>
