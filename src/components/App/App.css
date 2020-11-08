@@ -6,6 +6,7 @@ body {
   text-align: center;
 }
 
+/* Formatting for objects in the Movies View */
 .movivesGrid {
   display: inline-flex;
   flex-wrap: wrap;
@@ -50,4 +51,14 @@ h2 {
   text-overflow: ellipsis;
 }
 
+/* Formatting for the objects in the details view */
 
+.detailsContainer {
+  display: flex;
+  
+}
+.detailsPoster {
+  margin: 2%;
+  width: 400px;
+  height: 600px;
+}

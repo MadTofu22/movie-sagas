@@ -4,16 +4,16 @@ import {withRouter} from 'react-router-dom';
 
 class MovieCard extends Component {
 
-    // This function creates the alternate text for the poster image
-    createAltText = (title) => {
-        return `Poster image for the movie ${title}`;
-    }
-
     // This function handles the click event for the poster image
     handlePosterClick = (movie) => {
         console.log('poster clicked, id:', movie.id);
         const path = `/details/${movie.id}`;
         this.props.history.push(path);
+    }
+
+    // This function creates the alternate text for the poster image
+    createAltText = (title) => {
+        return `Poster image for the movie ${title}`;
     }
 
     render () {

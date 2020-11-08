@@ -25,7 +25,7 @@ getMovies = () => {
         <Router>
           {/* ADD PAGES! */}
           <Route exact path='/' component={MoviesList} />
-          <Route path='/details/:id' component={DetailsView} />
+          <Route path='/details/:id' component={(props)=>{return <DetailsView movie={this.props.reduxState.movies[props.match.params.id-1]}/>}} />
         </Router>
       </div>
     );
