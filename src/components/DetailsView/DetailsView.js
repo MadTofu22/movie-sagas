@@ -42,9 +42,9 @@ class DetailsView extends Component {
         return (
             <>
             <h1>{movie.title}</h1>
+            <button className='detailsReturnButton' onClick={this.handleClick}>Return to Movies</button>
             <div className='detailsContainer'>
                 <img className='detailsPoster' src={movie.poster} alt={this.createAltText(movie.title)} />
-                
                 <div className='detailsTextBlock'>
                     <h2 className='detailsHeader'>Description:</h2>
                     <p className='detailsDescription'>{movie.description}</p>
@@ -54,7 +54,6 @@ class DetailsView extends Component {
                             return <GenreTag key={tag.genres_id} tag={tag} />;
                         })}
                     </section>
-                    <button className='detailsReturnButton' onClick={this.handleClick}>Return to Movies</button>
                 </div>
             </div>
             </>
