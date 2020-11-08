@@ -8,7 +8,7 @@ class MovieForm extends Component {
         title: '',
         poster: '',
         description: '',
-        genre: null
+        genre_id: null
     }
 
     componentDidMount () {
@@ -30,8 +30,9 @@ class MovieForm extends Component {
     }
 
     // This function handles submiting the form and adding the new movie to the DB
-    handleSubmit = () => {
-
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.dispatch({type: 'ADD_MOVIE', payload: this.state});
     }
 
     // This function handles cancelling the input and returning the user to the home page
@@ -44,18 +45,20 @@ class MovieForm extends Component {
             <>
             <h1>Add a New Movie!</h1>
             <div className='movieForm'>
-                <form onSubmit={event => this.handleSubmit}>
+                <form onSubmit={event => this.handleSubmit(event)}>
                     <table className='inputTable'>
                         <thead>
-                            <th><label htmlFor='titleInput'>Movie Title</label></th>
-                            <th><label htmlFor='posterInput'>Poster URL</label></th>
-                            <th><label htmlFor='genreInput'>Genre</label></th>
+                            <tr>
+                                <th><label htmlFor='titleInput'>Movie Title</label></th>
+                                <th><label htmlFor='posterInput'>Poster URL</label></th>
+                                <th><label htmlFor='genreInput'>Genre</label></th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td><input required type='text' name='titleInput' placeholder='Movie Title' onChange={event => this.handleChange(event, 'title')}/></td>
                                 <td><input type='text' name='posterInput' placeholder='Poster URL' onChange={event => this.handleChange(event, 'poster')}/></td>
-                                <td><select name='genreInput' placeholder='Genre' onChange={event => this.handleChange(event, 'genre')}>
+                                <td><select name='genreInput' placeholder='Genre' onChange={event => this.handleChange(event, 'genre_id')}>
                                     <option></option>
                                     {this.props.reduxState.genres.map(genre => {
                                         return <option key={genre.id} value={genre.id}>{genre.name}</option>;
@@ -66,7 +69,9 @@ class MovieForm extends Component {
                     </table>
                     <table className='inputTable'>
                             <thead>
-                                <th><label htmlFor='descriptionInput'>Description</label></th>
+                                <tr>
+                                    <th><label htmlFor='descriptionInput'>Description</label></th>
+                                </tr>
                             </thead>
                             <tbody>
                                 <tr>

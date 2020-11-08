@@ -18,6 +18,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies);
     yield takeEvery('FETCH_GENRES', fetchGenres);
     yield takeEvery('FETCH_TAGS', fetchTags);
+    yield takeEvery('ADD_MOVIE', addMovie);
 }
 
 // Create the saga to handle async retrieval movies from server
@@ -45,6 +46,16 @@ function* fetchTags(action) {
     try {
         const tagsArray = yield axios.get(`/api/joins/${action.payload}`);
         yield put({type: 'SET_TAGS', payload: tagsArray.data});
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// This saga handles the async request of adding a new movie to the DB
+function* addMovie(action) {
+    try {
+        console.log('addMovie saga, payload:', action.payload);
+        yield axios.post(`/api/movie`, action.payload);
     } catch (error) {
         console.log(error);
     }
